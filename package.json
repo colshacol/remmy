@@ -1,6 +1,6 @@
 {
   "name": "remmy",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Easily create new React component scaffolds.",
   "main": "bin/remmy.js",
   "bin": {

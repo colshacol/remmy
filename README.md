@@ -2,23 +2,27 @@
 
 ### `npm i -g remmy`
 
-*__v1.0.0 arrives with breaking changes. Read on.__*
-
-### remmy helps you easily scaffold out new React components from user defined templates using a simple cli API.
+> remmy helps you easily scaffold out new directories from user defined templates.
 ---
 
-Create a remmy.json file:
+I get so fed up with creating new React component directories that have three
+sub-directories, and a total of 6 files just for boilerplate. So fed up that
+I created Remmy.
+
+## Usage
+
+### Create a remmy.json file:
 ```
 {
   "templates": {
     "templateName": {
-      "path": "./src/comps/TEMP",
-      "output": "./src/comps"
+      "path": "./remmy/comp",
+      "dest": "./src/client/comps"
     },
 
     "anotherTemplate": {
-      "path": "./src/views/TEMP",
-      "output": "./src/views"
+      "path": "./remmy/view",
+      "dest": "./src/client/views"
     }
   },
 
@@ -29,23 +33,39 @@ Create a remmy.json file:
 
 ```
 
-You may create as many templates as you like, each one having its own template and pre-defined output destination. Each file in the template's `path` directory will
-be scanned for variables and spit out in the `output` directory with the name
-provided in the terminal command.
+### Create your template directories:
+```
+|- remmy/
+|---- comp/
+|-------- $NAME.js
+|-------- stores/
+|------------ $NAME.store.js
+|-------- styles/
+|------------ $NAME.$CSS
+|---- view/
+|-------- $NAME.js
+|-------- utils/
+|------------ $NAME.utils.js
+|-------- styles/
+|------------ $NAME.$CSS
+```
 
-* Variables are not fully supported yet. Currently, the variables object allows you to determine if you wish to use a different CSS extension.
+### Apply variables as needed:
 
-In the path that you specified for your temlate, create your template files and
-use the variable `($NAME)` for where the component name will go and `($CSS)` if you
-want to use an alternative CSS extension, as defined in your `remmy.json`.
+When you run `remmy <templateName> <instanceName>`, remmy will replace any instance
+of "$NAME" found within your template files or template file names with the `<instanceName>`
+parameter.
+
+Any other variables defined within your `./remmy.json` file will also be acknowledged
+and processed accordingly.
+
+### Have fun.
+
+Boom. You have a new directory scaffold in milliseconds.
+
+You may create as many templates as you like, each one having its own template
+and predefined output destination.
 
 Now, create your new cloneponents!
 
-
-```
-// Create a new clone and name it.
-
-remmy <templateName> <cloneName>
-```
-
-Example: `remmy component MyNewComponent`
+Example: `remmy comp MyNewComponent`
