@@ -1,0 +1,36 @@
+const fs = require('fs')
+const path = require('path')
+
+const [
+  _node,
+  _remmy,
+  templateName,
+  instanceName
+] = process.argv
+
+function cleanPath(pathStr) {
+  if (pathStr[0] == '/') {
+    pathStr = pathStr.substr(1)
+  }
+  if (pathStr.indexOf('./') == 0) {
+    pathStr = pathStr.substr(2)
+  }
+  if (pathStr[pathStr.length - 1] !== '/') {
+    pathStr = pathStr + '/'
+  }
+  return pathStr
+}
+
+module.exports = (() => {
+  const remmyConfig = JSON.parse(fs.readFileSync('./remmy.json', 'utf-8'))
+  const template = remmyConfig.templates[templateName]
+  const nameVariable = { '$NAME': instanceName }
+  const variables = Object.assign(remmyConfig.variables, nameVariable)
+  return {
+    templatePath: cleanPath(template.path),
+    templateName: templateName,
+    destinationName: instanceName,
+    destinationPath: cleanPath(template.dest),
+    variables: variables,
+  }
+})()
