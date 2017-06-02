@@ -2,10 +2,8 @@
   "name": "remmy",
   "version": "1.0.3",
   "description": "Easily create new React component scaffolds.",
-  "main": "bin/remmy.js",
-  "bin": {
-    "remmy": "bin/remmy.js"
-  },
+  "main": "./bin/index.js",
+  "bin": "./bin/index.js",
   "scripts": {
     "remmy-dev": "nodemon -i ./sample --harmony ./bin comp MyCompy",
     "remmy": "node --harmony ./bin"
