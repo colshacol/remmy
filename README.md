@@ -2,7 +2,7 @@
 
 ### `npm i -g remmy`
 
-> remmy helps you easily scaffold out new directories from user defined templates.
+> remmy helps you easily scaffold out new directories from pre-defined templates.
 ---
 
 I get so fed up with creating new React component directories that have three
@@ -11,7 +11,10 @@ I created Remmy.
 
 ## Usage
 
-### Create a remmy.json file:
+### Create a remmy.json file.
+`remmy.json` should live in your project's root directory. It details the names
+of your templates, the paths to each template directory, the destination path
+for the cloned instance, and also variables to use in template compilation.
 ```
 {
   "templates": {
@@ -27,13 +30,19 @@ I created Remmy.
   },
 
   "variables": {
-    "$CSS" : "sass"
+    "$CSS" : "sass",
+    "$JS": "jsx"
   }
 }
 
 ```
 
-### Create your template directories:
+### Create your template directories.
+Each template needs its own directory for `remmy` to locate and clone. Directories
+can be deep, as long as they are not _infinitely_ deep. Anywhere in your files,
+file names, or directory names that `remmy` encounters `$NAME`, it will replace it
+like a variable with the name supplied to it.
+
 ```
 |- remmy/
 |---- comp/
@@ -50,21 +59,25 @@ I created Remmy.
 |------------ $NAME.$CSS
 ```
 
-### Apply variables as needed:
+Here is an example file.
 
-When you run `remmy <templateName> <instanceName>`, remmy will replace any instance
-of "$NAME" found within your template files or template file names with the `<instanceName>`
-parameter.
+```
+// $NAME.js
+import React from 'react'
+import css from './styles/index.$CSS'
 
-Any other variables defined within your `./remmy.json` file will also be acknowledged
-and processed accordingly.
+export default function $NAME(props) {
+  return // ...
+}
+```
 
-### Have fun.
+### Be more productive.
 
-Boom. You have a new directory scaffold in milliseconds.
+`remmy <templateName> <instanceName>`
 
-You may create as many templates as you like, each one having its own template
-and predefined output destination.
+`remmy` will look up the `<templateName>` in `remmy.json["comps"]` and
+clone it with appropriate variables, including `<instanceName>` in place of
+any `$NAME` placeholders found in recursively scanning the template directory.
 
 Now, create your new cloneponents!
 

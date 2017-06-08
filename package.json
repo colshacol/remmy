@@ -1,29 +1,44 @@
 {
-  "name": "remmy",
-  "version": "1.0.3",
-  "description": "Easily create new React component scaffolds.",
-  "main": "./bin/index.js",
-  "bin": "./bin/index.js",
-  "scripts": {
-    "remmy-dev": "nodemon -i ./sample --harmony ./bin comp MyCompy",
-    "remmy": "node --harmony ./bin"
+  "author": {
+    "name": "Colton Colcleasure"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/colshacol/remmy.git"
+  "bin": {
+    "remmy": "./bin/index.js"
   },
-  "keywords": [
-    "react"
-  ],
-  "author": "Colton Colcleasure",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/colshacol/remmy/issues"
   },
-  "homepage": "https://github.com/colshacol/remmy#readme",
   "dependencies": {
     "inquirer": "^3.0.6",
     "mkdirp": "^0.5.1",
     "recursive-readdir": "^2.2.1"
-  }
+  },
+  "description": "Easily create new file-structure scaffolds from template directories.",
+  "devDependencies": {},
+  "directories": {},
+  "homepage": "https://github.com/colshacol/remmy#readme",
+  "keywords": [
+    "react",
+    "component",
+    "template"
+  ],
+  "license": "ISC",
+  "main": "./bin/index.js",
+  "maintainers": [
+    {
+      "name": "colshacol",
+      "email": "colshacol@gmail.com"
+    }
+  ],
+  "name": "remmy",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colshacol/remmy.git"
+  },
+  "scripts": {
+    "remmy": "node --harmony ./bin",
+    "remmy-dev-sample": "nodemon -i ./sample --harmony ./bin comp MyCompy"
+  },
+  "version": "1.0.5"
 }

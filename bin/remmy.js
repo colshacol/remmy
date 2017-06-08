@@ -26,11 +26,15 @@ module.exports = (() => {
   const template = remmyConfig.templates[templateName]
   const nameVariable = { '$NAME': instanceName }
   const variables = Object.assign(remmyConfig.variables, nameVariable)
+  const destinationPath = cleanPath(template.dest)
+  const instanceExists = fs.existsSync(destinationPath + instanceName)
+
   return {
     templatePath: cleanPath(template.path),
-    templateName: templateName,
     destinationName: instanceName,
-    destinationPath: cleanPath(template.dest),
-    variables: variables,
+    instanceExists,
+    templateName,
+    destinationPath,
+    variables,
   }
 })()
