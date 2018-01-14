@@ -5,7 +5,7 @@
   "main": "./bin/index.js",
   "description": "Easily create new file-structure scaffolds from template directories.",
   "scripts": {
-    "start": "node -r @babel/register source",
+    "start": "clear && node -r @babel/register source",
     "remmy": "node --harmony ./bin",
     "remmy-dev-sample": "nodemon -i ./sample --harmony ./bin comp MyCompy"
   },
@@ -38,6 +38,7 @@
     "babel-plugin-flow-runtime": "^0.15.0",
     "babel-plugin-jsx-control-statements": "^3.2.8",
     "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-transform-glob-import": "^1.0.1",
     "flow-bin": "^0.63.1",
     "flow-runtime": "^0.16.0",
     "flow-typed": "^2.2.3"
