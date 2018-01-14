@@ -18,3 +18,13 @@ declare type UserConfigType = {|
   destinations: UserDestinationsConfigType,
   variables: UserVariablesConfigType
 |};
+
+
+declare type ValidatorRuleType = {
+  test(): boolean,
+  title: string,
+  reason: string,
+  reference: string
+}
+
+declare type ValidatorRuleSetType = ValidatorRuleType[];
