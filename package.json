@@ -5,12 +5,11 @@
   "main": "./bin/index.js",
   "description": "Easily create new file-structure scaffolds from template directories.",
   "scripts": {
-    "start": "clear && node -r @babel/register source",
-    "remmy": "node --harmony ./bin",
-    "remmy-dev-sample": "nodemon -i ./sample --harmony ./bin comp MyCompy"
+    "start": "clear && node -r @babel/register source"
   },
   "dependencies": {
-    "ink": "^0.3.1"
+    "ink": "^0.3.1",
+    "yargs": "^10.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.37",
