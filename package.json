@@ -5,10 +5,13 @@
   "main": "./bin/index.js",
   "description": "Easily create new file-structure scaffolds from template directories.",
   "scripts": {
-    "start": "clear && node -r @babel/register source -v"
+    "start": "clear && node -r @babel/register source",
+    "start-v": "clear && node -r @babel/register source -v"
   },
   "dependencies": {
     "ink": "^0.3.1",
+    "ink-spinner": "^1.0.0",
+    "log-symbols": "^2.1.0",
     "yargs": "^10.1.1"
   },
   "devDependencies": {

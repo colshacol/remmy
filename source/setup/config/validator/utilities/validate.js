@@ -1,3 +1,5 @@
+import symbols from 'log-symbols';
+
 import { validity } from './validity';
 
 export const validate = config => rules => {
