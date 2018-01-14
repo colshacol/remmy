@@ -1,6 +1,6 @@
 {
   "name": "remmy",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "license": "ISC",
   "main": "./bin/index.js",
   "description": "Easily create new file-structure scaffolds from template directories.",
