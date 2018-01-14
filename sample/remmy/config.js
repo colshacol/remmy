@@ -1,4 +1,3 @@
-// remmy create -t stateful -d components
 const path = require('path')
 
 export default {
@@ -17,5 +16,9 @@ export default {
     components: "<rootDir>/source/components",
     features: "<rootDir>/source/features",
     scenes: "<rootDir>/source/scenes"
+  },
+
+  variables: {
+    'varName': 'processedVarName'
   }
 };
