@@ -1,7 +1,6 @@
-import './setup/types';
-
 import { h, render, Component, Text } from "ink";
 
+import './setup/types';
 import { config } from './config';
 import * as Errors from '@features/Errors'
 
