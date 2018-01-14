@@ -48,8 +48,13 @@
       "alias": {
         "@utilities": "./source/utilities",
         "@components": "./source/components",
-        "@features": "./source/features"
+        "@features": "./source/features",
+        "@types": "./flow-typed/custom-definitions"
       }
+    }],
+    ["babel-plugin-flow-runtime", {
+      "assert": true,
+      "annotate": true
     }],
     "babel-plugin-jsx-control-statements"
   ]
