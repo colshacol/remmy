@@ -5,7 +5,7 @@
   "main": "./bin/index.js",
   "description": "Easily create new file-structure scaffolds from template directories.",
   "scripts": {
-    "start": "clear && node -r @babel/register source"
+    "start": "clear && node -r @babel/register source -v"
   },
   "dependencies": {
     "ink": "^0.3.1",

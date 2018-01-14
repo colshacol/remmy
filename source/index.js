@@ -1,38 +1,15 @@
-import { h, render, Component, Text } from "ink";
+import Ink, { h, Text } from "ink";
 
-import './setup/types';
-import { config } from './config';
-import * as Errors from '@features/Errors'
+import "./setup/types";
 
-class Remmy extends Component {
-	state = {
-		loading: true
-	}
+import { options } from './setup/options';
+import { config } from "./setup/config";
 
-	componentDidMount() {
-		setTimeout(() => process.exit(0), 100)
-	}
+import { Provider } from '@features/Provider';
+import { App } from './App';
 
-	render(props, state) {
-		return (
-			<div>
-				<Choose>
-					<When condition={!props.config.validity}>
-						<Text green>
-							Config is valid: Prompt which template to use.
-						</Text>
-					</When>
-					<Otherwise>
-						<Errors.InvalidConfig
-							reason={props.config.validity.reason}
-							reference={props.config.validity.reference}
-						/>
-					</Otherwise>
-				</Choose>
-			</div>
-		)
-	}
-}
-
-render(<Remmy config={config} />)
-
+Ink.render(
+	<Provider config={config} options={options}>
+		<App />
+	</Provider>
+);
