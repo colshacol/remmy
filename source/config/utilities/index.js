@@ -1,0 +1,1 @@
+export { configValidator } from './configValidator'

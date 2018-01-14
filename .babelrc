@@ -1,0 +1,56 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        },
+        "loose": true
+      }
+    ],
+    "@babel/preset-stage-0",
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-async-generator-functions",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-nullish-coalescing-operator",
+    "@babel/plugin-proposal-throw-expressions",
+    "@babel/plugin-proposal-pipeline-operator",
+    "@babel/plugin-proposal-optional-catch-binding",
+    "@babel/plugin-proposal-function-bind",
+    "@babel/plugin-check-constants",
+    "@babel/plugin-proposal-do-expressions",
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-decorators",
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-optional-chaining",
+      {
+        "loose": true
+      }
+    ],
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "pragma": "h"
+      }
+    ],
+    ["babel-plugin-module-resolver", {
+      "root": ["./source"],
+      "alias": {
+        "@utilities": "./source/utilities",
+        "@components": "./source/components",
+        "@features": "./source/features"
+      }
+    }],
+    "babel-plugin-jsx-control-statements"
+  ]
+}

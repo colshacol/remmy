@@ -1,0 +1,1 @@
+export { firstObject } from './firstObject'
