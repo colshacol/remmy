@@ -1,3 +1,5 @@
+import './setup/types';
+
 import { h, render, Component, Text } from "ink";
 
 import { config } from './config';
@@ -6,6 +8,10 @@ import * as Errors from '@features/Errors'
 class Remmy extends Component {
 	state = {
 		loading: true
+	}
+
+	componentDidMount() {
+		setTimeout(() => process.exit(0), 100)
 	}
 
 	render(props, state) {
