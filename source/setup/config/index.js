@@ -4,7 +4,7 @@ import userConfig from '../../../sample/remmy/config.js'
 export const config = ((config) => {
 	return {
 		// validity: validator(config),
-		...config
+		...config,
 	}
 })(userConfig)
 

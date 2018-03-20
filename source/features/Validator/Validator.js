@@ -1,75 +1,72 @@
 import Ink, { h, Text } from "ink";
+import Console, {LogCatcher} from 'ink-console';
 import symbols from "log-symbols";
 
 import { Validation } from './components/Validation';
 import { rules as configProperties } from "./ruleSets/configProperties";
 import { rules as rootDirValue } from "./ruleSets/rootDirValue";
+import * as methods from './methods'
 
 type Props = {
-  onComplete(): void
+	onComplete(): void
 };
 
-const rules = [...configProperties, ...rootDirValue];
-
-const validationLists = {
-	[0]: 'failures',
-	[1]: 'validations' 
-}
-
-let i = 0;
+const rules = [ ...configProperties, ...rootDirValue ];
 
 export class Validator extends Ink.Component<Props> {
-  state = {
-    validations: [],
-    failures: []
+	state = {
+		validations: [],
+		failures: []
 	};
 
-	fakeUpdate = () => {
-		if (i++ > rules.length) return;
-
-		setTimeout(() => {
-			this.setState(state => ({
-				failures: [...state.failures, i]
-			}), () => {
-				this.fakeUpdate();
-			})
-		}, 500)
-	}
-
 	componentDidMount() {
-		setTimeout(this.fakeUpdate, 1000);
+		rules.forEach((rule, index) => {
+			setTimeout(() => {
+				const i = String(index);
+				this.setValidation(rule.test(this.context.config), i);
+			}, 200 * index)
+		})
 	}
 
-  render(props, state, context) {
-    return context.options.v && (
-      <div>
-        <For each="rule" of={rules} index="index">
-          <Validation
-						status={this.checkStatus(index)}
+	render(props, state, context) {
+		this.confirmCompletion();
+
+		return context.options.v && (
+			<div>
+				<For each="rule" of={rules} index="index">
+					<Validation
+						status={this.statusOf(index)}
 						rule={rule}
 					/>
-        </For>
-      </div>
-    );
-  }
+				</For>
+			</div>
+		);
+	}
 
-  checkStatus = index => {
-		const { validations, failures } = this.state;
+	confirmCompletion = () => {
+		this.rulesCompleted && this.allRulesPassed && this.props.onComplete();
+	}
 
-		if (index in validations) {
-			return 2;
-		} else if (index in failures) {
-			return 0;
-		} else {
-			return 1;
-		}
-  };
+	get allRulesPassed() {
+		return this.state.validations.length === rules.length;
+	}
 
-  setValidation = (index: number, status: number) => {
-		const which = validationLists[which];
+	get rulesCompleted() {
+		return this.state.validations.length + this.state.failures.length === rules.length;
+	}
 
-    this.setState(state => ({
-      [which]: [...state[which], index]
-    }));
-  };
+	statusOf = index => {
+		return this.state.validations.includes(index)
+			? 'validations'
+			: this.state.failures.includes(index)
+				? 'failures'
+				: 'pending'
+	}
+
+	setValidation(result: boolean, index: string) {
+		const which = result ? 'validations' : 'failures'
+		this.setState(state => ({
+			[which]: [ Number(index), ...state[which]]
+		}));
+	};
 }

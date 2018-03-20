@@ -1,4 +1,5 @@
 import Ink, { h, Text } from "ink";
+import { BlankLine } from 'ink-spaces';
 
 import { Provider } from "@features/Provider";
 import { Validator } from '@features/Validator';
@@ -16,6 +17,11 @@ export class App extends Ink.Component {
   render(props, state, context) {
     return (
       <div>
+				<If condition={!state.validated}>
+					<Text>Validating User Config...</Text>
+					<BlankLine />
+					<BlankLine />
+				</If>
         <Choose>
           <When condition={!state.validated}>
             <Validator onComplete={this.passValidation} />
@@ -34,12 +40,3 @@ export class App extends Ink.Component {
     }))
   }
 }
-
-
-
-/*
-            <Errors.InvalidConfig
-              reason={context.config.validity.reason}
-              reference={context.config.validity.reference}
-            />
-*/

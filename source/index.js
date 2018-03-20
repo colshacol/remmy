@@ -1,5 +1,4 @@
 import Ink, { h, Text } from "ink";
-
 import "./setup/types";
 
 import { options } from './setup/options';

@@ -2,43 +2,29 @@ import Ink, { h, Text } from "ink";
 import symbols from "log-symbols";
 import Spinner from "ink-spinner";
 
-import { Spaces } from '@components/Spaces';
+import { Spaces, Tab } from 'ink-spaces';
+import { colorProp } from './utilities/colorProp'
 
 type Props = {
-  status: number,
+  status: string,
   rule: ValidatorRuleType
 };
 
-const colorProp = (status: number) => {
-  const color = do {
-    if (status === 0) {
-      'red';
-    } else if (status === 1) {
-      'white';
-    } else if (status === 2) {
-      'green';
-    }
-  };
-
-  return {
-    [color]: true
-  };
-};
-
+let i = 0;
 export const Validation = (props: Props) => {
-  const color = colorProp(props.status);
-
+	const color = colorProp(props.status);
   return (
     <div>
+			<Spaces count={4} />
       <Choose>
-        <When condition={props.status === 2}>{symbols.success}</When>
-        <When condition={props.status === 1}>
+        <When condition={props.status === 'validations'}>{symbols.success}</When>
+        <When condition={props.status === 'pending'}>
           <Spinner green type="toggle" />
         </When>
         <Otherwise>{symbols.error}</Otherwise>
       </Choose>
       <Spaces count={2} />
-      <Text {...color}>{props.rule.title}</Text>
+      <Text {...colorProp(props.status)}>{props.rule.title}</Text>
     </div>
   );
 };
