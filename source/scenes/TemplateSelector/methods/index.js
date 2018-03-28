@@ -1,0 +1,1 @@
+export { componentDidMount } from './componentDidMount'

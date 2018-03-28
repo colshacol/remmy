@@ -1,14 +1,14 @@
-import Ink, { h, Text } from "ink";
-import "./setup/types";
+import Ink, { h, Text } from 'ink'
+import './setup/types'
 
-import { options } from './setup/options';
-import { config } from "./setup/config";
+import { options } from './setup/options'
+import { userConfig } from './setup/config'
 
-import { Provider } from '@features/Provider';
-import { App } from './App';
+import { Provider } from '@components/Provider'
+import { App } from './App'
 
 Ink.render(
-	<Provider config={config} options={options}>
+	<Provider config={userConfig} options={options}>
 		<App />
 	</Provider>
-);
+)
