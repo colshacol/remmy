@@ -1,80 +1,116 @@
 {
-  "name": "remmy",
-  "version": "2.0.0",
-  "license": "ISC",
-  "main": "./bin/index.js",
-  "description": "Easily create new file-structure scaffolds from template directories.",
-  "scripts": {
-    "start": "clear && node -r @babel/register source",
-    "start-v": "clear && node -r @babel/register source -v",
-    "build": "babel source --out-dir bin"
-  },
-  "dependencies": {
-    "ink": "^0.4.1",
-    "ink-console": "^1.0.0",
-    "ink-select-input": "^1.0.0",
-    "ink-spaces": "^0.0.1",
-    "ink-spinner": "^1.0.0",
-    "log-symbols": "^2.1.0",
-    "node-dir": "^0.1.17",
-    "yargs": "^10.1.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.0.0-beta.37",
-    "@babel/node": "^7.0.0-beta.37",
-    "@babel/plugin-check-constants": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-async-generator-functions": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-decorators": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-do-expressions": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-export-namespace-from": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-function-bind": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-numeric-separator": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-optional-catch-binding": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-pipeline-operator": "^7.0.0-beta.37",
-    "@babel/plugin-proposal-throw-expressions": "^7.0.0-beta.37",
-    "@babel/plugin-transform-react-jsx": "^7.0.0-beta.37",
-    "@babel/polyfill": "^7.0.0-beta.37",
-    "@babel/preset-env": "^7.0.0-beta.37",
-    "@babel/preset-flow": "^7.0.0-beta.37",
-    "@babel/preset-stage-0": "^7.0.0-beta.37",
-    "@babel/register": "^7.0.0-beta.37",
-    "babel-plugin-flow-runtime": "^0.15.0",
-    "babel-plugin-jsx-control-statements": "^3.2.8",
-    "babel-plugin-module-resolver": "^3.0.0",
-    "babel-plugin-transform-glob-import": "^1.0.1",
-    "flow-bin": "^0.63.1",
-    "flow-runtime": "^0.16.0",
-    "flow-typed": "^2.2.3"
-  },
-  "author": {
-    "name": "Colton Colcleasure"
-  },
-  "bin": {
-    "remmy": "./bin/index.js"
-  },
-  "bugs": {
-    "url": "https://github.com/colshacol/remmy/issues"
-  },
-  "directories": {},
-  "homepage": "https://github.com/colshacol/remmy#readme",
-  "keywords": [
-    "react",
-    "component",
-    "template"
-  ],
-  "maintainers": [
-    {
-      "name": "colshacol",
-      "email": "colshacol@gmail.com"
-    }
-  ],
-  "optionalDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/colshacol/remmy.git"
-  }
+	"name": "remmy",
+	"version": "2.0.0",
+	"license": "ISC",
+	"main": "./bin/index.js",
+	"description": "Easily create new file-structure scaffolds from template directories.",
+	"scripts": {
+		"start": "babel-node source",
+		"start-v": "babel-node source -v",
+		"build": "babel source --out-dir bin",
+		"test": "ava **/_tests/*.t.js -v"
+	},
+	"dependencies": {
+		"arr-rotate": "^1.0.0",
+		"copy-dir": "^0.3.0",
+		"fuzzy": "^0.1.3",
+		"get-value": "^3.0.1",
+		"has-ansi": "^3.0.0",
+		"ink": "^0.5.0",
+		"ink-autocomplete": "^0.0.0",
+		"ink-box": "^0.1.0",
+		"ink-console": "^1.0.0",
+		"ink-quicksearch": "^0.3.2",
+		"ink-scrollbar": "^1.0.0",
+		"ink-select-input": "^1.1.0",
+		"ink-spaces": "^0.0.1",
+		"ink-spinner": "^1.0.0",
+		"ink-step": "^0.0.3",
+		"ink-text-input": "^2.0.0",
+		"log-symbols": "^2.1.0",
+		"meow": "^5.0.0",
+		"node-dir": "^0.1.17",
+		"prop-types": "^15.6.1",
+		"replace": "^1.0.0",
+		"set-value": "^3.0.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.0.0-beta.49",
+		"@babel/node": "^7.0.0-beta.49",
+		"@babel/plugin-transform-react-jsx": "^7.0.0-beta.49",
+		"@babel/plugin-transform-runtime": "^7.0.0-beta.49",
+		"@babel/polyfill": "^7.0.0-beta.49",
+		"@babel/preset-env": "^7.0.0-beta.49",
+		"@babel/preset-flow": "^7.0.0-beta.49",
+		"@babel/preset-stage-0": "^7.0.0-beta.49",
+		"@babel/register": "^7.0.0-beta.49",
+		"@babel/runtime": "^7.0.0-beta.49",
+		"ava": "1.0.0-beta.5.1",
+		"babel-plugin-dev-expression": "^0.2.1",
+		"babel-plugin-jsx-control-statements": "^3.2.8",
+		"babel-plugin-module-resolver": "^3.0.0",
+		"babel-plugin-transform-glob-import": "^1.0.1",
+		"flow-bin": "^0.63.1",
+		"flow-typed": "^2.2.3"
+	},
+	"remmy": {
+		"rootDir": "source",
+		"templates": "./sample/templates",
+		"variables": {
+			"instanceName": "NAME__"
+		}
+	},
+	"ava": {
+		"files": [
+			"my-test-directory/**/*.js",
+			"!my-test-directory/exclude-this-directory/**/*.js",
+			"!**/exclude-this-file.js"
+		],
+		"sources": [
+			"**/*.{js}"
+		],
+		"cache": true,
+		"concurrency": 2,
+		"failFast": true,
+		"failWithoutAssertions": false,
+		"tap": false,
+		"compileEnhancements": false,
+		"require": [
+			"@babel/register"
+		],
+		"babel": {
+			"extensions": [
+				"js"
+			],
+			"testOptions": {
+				"babelrc": true
+			}
+		}
+	},
+	"author": {
+		"name": "Colton Colcleasure"
+	},
+	"bin": {
+		"remmy": "./bin/index.js"
+	},
+	"bugs": {
+		"url": "https://github.com/colshacol/remmy/issues"
+	},
+	"directories": {},
+	"homepage": "https://github.com/colshacol/remmy#readme",
+	"keywords": [
+		"react",
+		"component",
+		"template"
+	],
+	"maintainers": [
+		{
+			"name": "colshacol",
+			"email": "colshacol@gmail.com"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/colshacol/remmy.git"
+	}
 }
