@@ -54,7 +54,7 @@
 		"flow-typed": "^2.2.3"
 	},
 	"remmy": {
-		"rootDir": "source",
+		"rootDir": "./source",
 		"templates": "./sample/templates",
 		"variables": {
 			"instanceName": "NAME__"
