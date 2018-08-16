@@ -51,6 +51,7 @@ export const AutoComplete = ({
 					items={matches}
 					onSelect={onSubmit}
 					focus={hasSuggestion}
+					limit={10}
 					indicatorComponent={indicatorComponent}
 					itemComponent={itemComponent}
 					onChange={onSelectionChange}
