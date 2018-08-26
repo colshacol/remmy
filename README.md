@@ -2,7 +2,9 @@
 
 > The template directory factory.
 
-Install it with `npm i -g remmy` or `yarn global add remmy`.
+`npm i -g remmy`
+
+## Configuration
 
 Add the configuration to your `package.json`:
 
@@ -15,6 +17,20 @@ Add the configuration to your `package.json`:
   }
 }
 ```
+
+**rootDir**
+
+I don't remember exactly what this one is for. But I think it was the root directory of where remmy will search for directories for your clone to be placed.
+
+**templates**
+
+The path to the directory in which your template directories exist.
+
+**variables**
+
+Currently only supports (and requires) `instanceName`. This is what remmy will look for in your files / file names to replace with your instance's name.
+
+## Usage
 
 Create your templates inside of `./path/to/templates`.
 
