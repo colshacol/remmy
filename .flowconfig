@@ -1,0 +1,16 @@
+[ignore]
+
+[include]
+./flow-typed
+./custom-definitions
+
+[libs]
+./custom-definitions
+
+[lints]
+
+[options]
+esproposal.export_star_as = enable
+experimental.const_params = true
+
+[strict]
