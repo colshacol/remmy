@@ -40,4 +40,4 @@ Finally, just run `remmy`.
 
 [Inspired by birla.](https://github.com/itaditya/birla)
 
-Max Limit 99,99 €  ---  
+Max Limit 99,99 €   ---  
