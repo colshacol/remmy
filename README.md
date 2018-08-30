@@ -39,3 +39,5 @@ Finally, just run `remmy`.
 ![remmy-demo](https://user-images.githubusercontent.com/19484365/41815765-cd59d590-7739-11e8-9600-f1c0705772aa.gif)
 
 [Inspired by birla.](https://github.com/itaditya/birla)
+
+Max Limit 99,99 €  ---  
