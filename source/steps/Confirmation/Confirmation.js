@@ -17,7 +17,7 @@ export class Confirmation extends Ink.Component {
 			appStatus.outputDir,
 			appStatus.instanceName
 		))
-		// console.log(this.context.appStatus)
+
 		copyDir.sync(appStatus.templateDir, outputDir)
 
 		replace({

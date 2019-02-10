@@ -5,7 +5,6 @@ import { AutoComplete } from '@components/AutoComplete'
 import Scrollbar from 'ink-scrollbar'
 
 const getDirectories = rootDir => {
-	// console.log(rootDir)
 	return getDirectoryNames(rootDir, false).map(name => {
 		return {
 			label: trimPathToRootDir(name),
@@ -19,7 +18,7 @@ export class TemplateSelection extends Ink.Component {
 		template: ''
 	}
 
-	templates = getDirectories(this.props.context.templates, false)
+	inputOptions = this.props.context.inputOptions
 	selectedItem = ''
 
 	setTemplate = template => {
@@ -45,7 +44,7 @@ export class TemplateSelection extends Ink.Component {
 				<Color green>{'Template to use: '}</Color>
 				<AutoComplete
 					onSelectionChange={this.setSelected}
-					items={this.templates}
+					items={this.inputOptions}
 					onChange={this.setTemplate}
 					onSubmit={this.accept}
 					value={state.template}

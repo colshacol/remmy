@@ -1,6 +1,6 @@
-import { h } from 'ink'
+import { h, Color } from 'ink'
 import PropTypes from 'prop-types'
-
+import { BlankLine } from 'ink-spaces'
 import Select from '@components/SelectInput'
 import TextInput from '@components/TextInput'
 import fuzzy from 'fuzzy'
@@ -8,12 +8,21 @@ import fuzzy from 'fuzzy'
 // Helpers -------------------------------------------------------------------
 
 const noop = () => {}
-const not = a => !a
 const isEmpty = arr => arr.length === 0
 const getMatch = input => ({ label }) =>
 	input.length > 0 && label.toLowerCase().indexOf(input.toLowerCase()) > -1
 
 // AutoComplete --------------------------------------------------------------
+
+const match = (items, value) => {
+	const values = items.map(item => item.label)
+	const results = fuzzy.filter(value, values)
+	const matches = results.map(item => item.string)
+
+	return items.filter(item => {
+		return matches.includes(item.label)
+	})
+}
 
 export const AutoComplete = ({
 	value,
@@ -26,16 +35,7 @@ export const AutoComplete = ({
 	indicatorComponent,
 	itemComponent
 }) => {
-	const matches = fuzzy
-		.filter(value.replace('./', ''), items, {
-			extract(item) {
-				return item.value
-			}
-		})
-		.map(item => {
-			return { label: item.original.label, value: item.string }
-		})
-	const hasSuggestion = not(isEmpty(matches))
+	const matches = match(items, value)
 
 	return (
 		<span>
@@ -46,11 +46,12 @@ export const AutoComplete = ({
 					onChange={onChange}
 				/>
 			</div>
-			{hasSuggestion && (
+
+			{!isEmpty(matches) && (
 				<Select
 					items={matches}
 					onSelect={onSubmit}
-					focus={hasSuggestion}
+					focus={!isEmpty(matches)}
 					limit={10}
 					indicatorComponent={indicatorComponent}
 					itemComponent={itemComponent}

@@ -1,24 +1,14 @@
 import Ink, { h, Color } from 'ink'
 
-import { trimPathToRootDir, lastObject, getDirectoryNames } from '@utilities'
+import { trimPathToRootDir, lastObject } from '@utilities'
 import { AutoComplete } from '@components/AutoComplete'
-import Scrollbar from 'ink-scrollbar'
-
-const getDirectories = rootDir => {
-	return getDirectoryNames(rootDir, true).map(name => {
-		return {
-			label: trimPathToRootDir(name),
-			value: name
-		}
-	})
-}
 
 export class DirectorySelection extends Ink.Component {
 	state = {
-		path: trimPathToRootDir(this.props.context.rootDir)
+		path: ''
 	}
 
-	directories = getDirectories(this.props.context.rootDir)
+	outputOptions = this.props.context.outputOptions
 	selectedItem = ''
 
 	setPath = path => {
@@ -45,7 +35,7 @@ export class DirectorySelection extends Ink.Component {
 				<AutoComplete
 					placeholder={'type to fuzzy search directories'}
 					onSelectionChange={this.setSelected}
-					items={this.directories}
+					items={this.outputOptions}
 					onChange={this.setPath}
 					onSubmit={this.accept}
 					value={state.path}

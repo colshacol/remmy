@@ -1,13 +1,10 @@
-import './setup/types'
+#!/usr/bin/env node
 
 import Ink, { h, Text } from 'ink'
-import Box from 'ink-box'
 import path from 'path'
 import cli from './cli'
-import set from 'set-value'
-import get from 'get-value'
+import getPaths from './getPaths'
 
-import getUserConfig from '@utilities/getUserConfig'
 import { Provider } from '@components/Provider'
 import { Remmy } from './Remmy'
 
@@ -19,19 +16,29 @@ const DEFAULT_STATUS = {
 	outputDir: null
 }
 
-const rootDirValue = cli.pkg.remmy.rootDir
-
-cli.pkg.remmy.rootDir = path.resolve(process.cwd(), rootDirValue)
-cli.pkg.remmy.appStatus = DEFAULT_STATUS
+const pkg = require(process.cwd() + '/package.json')
+const rootDir = path.resolve(process.cwd(), pkg.remmy.rootDir)
+const templates = path.resolve(process.cwd(), pkg.remmy.templates)
+const { outputOptions, inputOptions } = getPaths(rootDir, templates)
+const appStatus = DEFAULT_STATUS
 
 Ink.render(
 	<Provider
 		{...cli}
-		templates={cli.pkg.remmy.templates}
-		rootDir={cli.pkg.remmy.rootDir}
-		appStatus={DEFAULT_STATUS}
-		config={cli.pkg.remmy}
+		pkg={pkg}
+		config={pkg.remmy}
+		rootDir={rootDir}
+		templates={templates}
+		outputOptions={outputOptions}
+		inputOptions={inputOptions}
+		appStatus={appStatus}
 	>
 		<Remmy />
 	</Provider>
 )
+
+// {
+// 	templatesPath: 'src/_templates',
+// 	sourcePath: 'src',
+
+// }

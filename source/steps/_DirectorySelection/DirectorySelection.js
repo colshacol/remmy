@@ -1,7 +1,6 @@
 import path from 'path'
 import Ink, { h, Color } from 'ink'
 import Select from '@components/SelectInput'
-import getDirectoryNames from '@utilities/getDirectoryNames'
 import { trimPathToRootDir, lastObject } from '@utilities'
 
 const config = require(path.resolve(process.cwd(), 'package.json')).remmy
@@ -45,10 +44,6 @@ const generateOption = (dirPath: string) => {
 	}
 }
 
-const generateOptions = current => {
-	return getDirectoryNames(current).map(generateOption)
-}
-
 export class DirectorySelection extends Ink.Component {
 	previousStates = []
 
@@ -61,7 +56,7 @@ export class DirectorySelection extends Ink.Component {
 		return filterTruthy([
 			generatePreviousOption(this.state.previousDirectory),
 			generateAcceptanceOption(this.state.selectedDirectory),
-			...generateOptions(this.state.selectedDirectory)
+			...this.context.config._paths
 		])
 	}
 
