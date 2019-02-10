@@ -1,6 +1,6 @@
 {
 	"name": "remmy",
-	"version": "2.0.12",
+	"version": "2.0.13",
 	"license": "ISC",
 	"main": "./bin/index.js",
 	"description": "Easily create new file-structure scaffolds from template directories.",
@@ -50,13 +50,6 @@
 		"babel-plugin-transform-glob-import": "^1.0.1",
 		"flow-bin": "^0.63.1",
 		"flow-typed": "^2.2.3"
-	},
-	"remmy": {
-		"rootDir": "./source",
-		"templates": "./sample/templates",
-		"variables": {
-			"instanceName": "NAME__"
-		}
 	},
 	"ava": {
 		"files": [
