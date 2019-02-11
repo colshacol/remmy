@@ -2,6 +2,7 @@ import Ink, { h, Color } from 'ink'
 import TextInput from '@components/TextInput'
 import { getMatchingFileNames } from '@utilities'
 import copyDir from 'copy-dir'
+import makeDir from 'make-dir'
 import replace from 'replace'
 import path from 'path'
 import fs from 'fs'
@@ -13,12 +14,18 @@ export class Confirmation extends Ink.Component {
 
 	componentDidMount() {
 		const { appStatus, config } = this.context
+
 		const outputDir = (this.outputDir = path.join(
 			appStatus.outputDir,
 			appStatus.instanceName
 		))
 
-		copyDir.sync(appStatus.templateDir, outputDir)
+		try {
+			copyDir.sync(appStatus.templateDir, outputDir)
+		} catch (error) {
+			makeDir.sync(outputDir)
+			copyDir.sync(appStatus.templateDir, outputDir)
+		}
 
 		replace({
 			regex: config.variables.instanceName,
@@ -39,6 +46,7 @@ export class Confirmation extends Ink.Component {
 				file.replace(config.variables.instanceName, appStatus.instanceName)
 			)
 		})
+
 		this.setState(
 			{
 				done: true

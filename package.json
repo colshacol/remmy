@@ -1,6 +1,6 @@
 {
 	"name": "remmy",
-	"version": "2.0.13",
+	"version": "2.1.0",
 	"license": "ISC",
 	"main": "./bin/index.js",
 	"description": "Easily create new file-structure scaffolds from template directories.",
@@ -32,6 +32,7 @@
 		"ink-step": "^0.0.3",
 		"ink-text-input": "^2.0.0",
 		"log-symbols": "^2.1.0",
+		"make-dir": "^2.0.0",
 		"meow": "^5.0.0",
 		"node-dir": "^0.1.17",
 		"nodemon": "^1.18.10",
