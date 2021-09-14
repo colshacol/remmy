@@ -38,7 +38,7 @@
 		"nodemon": "^1.18.10",
 		"prop-types": "^15.6.1",
 		"replace": "^1.0.0",
-		"set-value": "^3.0.0"
+		"set-value": "^4.0.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.2",
